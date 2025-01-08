@@ -2,14 +2,14 @@
     "version":2,
     "builds":[
         {
-            "src": "linebot/app.py",
+            "src": "app.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "linebot/app.py"
+            "dest": "app.py"
         }
     ]
 }
