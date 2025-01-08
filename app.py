@@ -23,7 +23,7 @@ import os
 app = Flask(__name__)
 
 configuration = Configuration(access_token=os.getenv('Channel_Access_Token'))
-handler = WebhookHandler('Channel_Secret')
+line_handler = WebhookHandler('Channel_Secret')
 
 
 @app.route("/callback", methods=['POST'])
@@ -37,7 +37,7 @@ def callback():
 
     # handle webhook body
     try:
-        handler.handle(body, signature)
+        line_handler.handle(body, signature)
     except InvalidSignatureError:
         app.logger.info("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
@@ -45,7 +45,7 @@ def callback():
     return 'OK'
 
 
-@handler.add(MessageEvent, message=TextMessageContent)
+@line_handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
@@ -58,3 +58,4 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run()
+    print(f"Debug: base = {base}, type = {type(base)}")
