@@ -25,7 +25,7 @@ app = Flask(__name__)
 # Channel Access Token(TOKEN)
 line_bot_api = LineBotApi(os.getenv('Channel_Access_Token'))
 # Channel Secret
-handler = WebhookHandler(os.getenv('Channel_Secret'))
+line_handler = WebhookHandler(os.getenv('Channel_Secret'))
 # Your user ID
 # line_bot_api.push_message(os.getenv('User_ID'), TextSendMessage(text='他媽的終於成功了'))
 
@@ -39,14 +39,14 @@ def callback():
     app.logger.info("Request body: " + body)
     # handle webhook body
     try:
-        handler.handle(body, signature)
+        line_handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
     return "OK"
 
 # ========訊息傳遞區塊==========
 ##### 基本上程式編輯都在這個function #####
-@handler.add(MessageEvent, message=TextMessage)
+@line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token,message)
