@@ -50,68 +50,20 @@ def callback():
 def handle_message(event):
     message = event.message.text
     template_message = TemplateSendMessage(
-        alt_text='pratice',
-        template={
-            "size": {
-                "width": 2500,
-                "height": 843
-            },
-            "selected": true,
-            "name": "圖文選單 1",
-            "chatBarText": "查看更多資訊",
-            "areas": [
-                {
-                    "bounds": {
-                        "x": 2,
-                        "y": 0,
-                        "width": 617,
-                        "height": 837
-                    },
-                    "action": {
-                        "type": "message",
-                        "text": "111"
-                    }
-                },
-                {
-                    "bounds": {
-                        "x": 621,
-                        "y": 0,
-                        "width": 638,
-                        "height": 837
-                    },
-                    "action": {
-                        "type": "message",
-                        "text": "222"
-                    }
-                },
-                {
-                    "bounds": {
-                        "x": 1261,
-                        "y": 0,
-                        "width": 615,
-                        "height": 835
-                    },
-                    "action": {
-                        "type": "message",
-                        "text": "333"
-                    }
-                },
-                {
-                    "bounds": {
-                        "x": 1875,
-                        "y": 0,
-                        "width": 623,
-                        "height": 835
-                    },
-                    "action": {
-                        "type": "message",
-                        "text": "444"
-                    }
-                }
+        alt_text='按鈕選單範例',
+        template=ButtonsTemplate(
+            title="選單範例",
+            text="請選擇以下選項：",
+            actions=[
+                MessageAction(label="選項 1", text="111"),
+                MessageAction(label="選項 2", text="222"),
+                MessageAction(label="選項 3", text="333"),
+                MessageAction(label="選項 4", text="444"),
             ]
-        }
+        )
     )
-    line_bot_api.reply_message(event.reply_token,template_message)
+    line_bot_api.reply_message(event.reply_token, template_message)
+
 
 # ========主程式==========
 if __name__ == "__main__":
