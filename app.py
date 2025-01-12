@@ -39,7 +39,7 @@ def callback():
     app.logger.info("Request body: " + body)
     # handle webhook body
     try:
-        line_handler.handle(body, signature)
+        line_handler.handle(body, signature) 
     except InvalidSignatureError:
         abort(400)
     return "OK"
@@ -48,7 +48,69 @@ def callback():
 ##### 基本上程式編輯都在這個function #####
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
+    message = event.message.text
+    template_message = TemplateSendMessage(
+        alt_text='pratice'
+        template={
+            "size": {
+                "width": 2500,
+                "height": 843
+            },
+            "selected": true,
+            "name": "圖文選單 1",
+            "chatBarText": "查看更多資訊",
+            "areas": [
+                {
+                "bounds": {
+                    "x": 2,
+                    "y": 0,
+                    "width": 617,
+                    "height": 837
+                },
+                "action": {
+                    "type": "message",
+                    "text": "111"
+                }
+                },
+                {
+                "bounds": {
+                    "x": 621,
+                    "y": 0,
+                    "width": 638,
+                    "height": 837
+                },
+                "action": {
+                    "type": "message",
+                    "text": "222"
+                }
+                },
+                {
+                "bounds": {
+                    "x": 1261,
+                    "y": 0,
+                    "width": 615,
+                    "height": 835
+                },
+                "action": {
+                    "type": "message",
+                    "text": "333"
+                }
+                },
+                {
+                "bounds": {
+                    "x": 1875,
+                    "y": 0,
+                    "width": 623,
+                    "height": 835
+                },
+                "action": {
+                    "type": "message",
+                    "text": "444"
+                }
+                }
+            ]
+        }
+    )
     line_bot_api.reply_message(event.reply_token,message)
 
 # ========主程式==========
