@@ -61,57 +61,57 @@ def handle_message(event):
             "chatBarText": "查看更多資訊",
             "areas": [
                 {
-                "bounds": {
-                    "x": 2,
-                    "y": 0,
-                    "width": 617,
-                    "height": 837
-                },
-                "action": {
-                    "type": "message",
-                    "text": "111"
-                }
-                },
-                {
-                "bounds": {
-                    "x": 621,
-                    "y": 0,
-                    "width": 638,
-                    "height": 837
-                },
-                "action": {
-                    "type": "message",
-                    "text": "222"
-                }
+                    "bounds": {
+                        "x": 2,
+                        "y": 0,
+                        "width": 617,
+                        "height": 837
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "111"
+                    }
                 },
                 {
-                "bounds": {
-                    "x": 1261,
-                    "y": 0,
-                    "width": 615,
-                    "height": 835
-                },
-                "action": {
-                    "type": "message",
-                    "text": "333"
-                }
+                    "bounds": {
+                        "x": 621,
+                        "y": 0,
+                        "width": 638,
+                        "height": 837
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "222"
+                    }
                 },
                 {
-                "bounds": {
-                    "x": 1875,
-                    "y": 0,
-                    "width": 623,
-                    "height": 835
+                    "bounds": {
+                        "x": 1261,
+                        "y": 0,
+                        "width": 615,
+                        "height": 835
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "333"
+                    }
                 },
-                "action": {
-                    "type": "message",
-                    "text": "444"
-                }
+                {
+                    "bounds": {
+                        "x": 1875,
+                        "y": 0,
+                        "width": 623,
+                        "height": 835
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "444"
+                    }
                 }
             ]
         }
     )
-    line_bot_api.reply_message(event.reply_token,message)
+    line_bot_api.reply_message(event.reply_token,template_message)
 
 # ========主程式==========
 if __name__ == "__main__":
