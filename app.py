@@ -50,20 +50,98 @@ def callback():
 def handle_message(event):
     message = event.message.text
     template_message = TemplateSendMessage(
-        alt_text='按鈕選單範例',
-        template=ButtonsTemplate(
-            title="選單範例",
-            text="請選擇以下選項：",
-            actions=[
-                MessageAction(label="選項 1", text="111"),
-                MessageAction(label="選項 2", text="222"),
-                MessageAction(label="選項 3", text="333"),
-                MessageAction(label="選項 4", text="444"),
-            ]
-        )
+        alt_text='pratice',
+        template={
+            "type": "template",
+            "altText": "this is a carousel template",
+            "template": {
+                "type": "carousel",
+                "columns": [
+                {
+                    "title": "標題",
+                    "text": "文字",
+                    "actions": [
+                    {
+                        "type": "message",
+                        "label": "動作 1",
+                        "text": "動作 1"
+                    },
+                    {
+                        "type": "message",
+                        "label": "動作 2",
+                        "text": "動作 2"
+                    }
+                    ]
+                },
+                {
+                    "title": "標題",
+                    "text": "文字",
+                    "actions": [
+                    {
+                        "type": "message",
+                        "label": "動作 1",
+                        "text": "動作 1"
+                    },
+                    {
+                        "type": "message",
+                        "label": "動作 2",
+                        "text": "動作 2"
+                    }
+                    ]
+                },
+                {
+                    "title": "標題",
+                    "text": "文字",
+                    "actions": [
+                    {
+                        "type": "message",
+                        "label": "動作 1",
+                        "text": "動作 1"
+                    },
+                    {
+                        "type": "message",
+                        "label": "動作 2",
+                        "text": "動作 2"
+                    }
+                    ]
+                },
+                {
+                    "title": "標題",
+                    "text": "文字",
+                    "actions": [
+                    {
+                        "type": "message",
+                        "label": "動作 1",
+                        "text": "動作 1"
+                    },
+                    {
+                        "type": "message",
+                        "label": "動作 2",
+                        "text": "動作 2"
+                    }
+                    ]
+                },
+                {
+                    "title": "標題",
+                    "text": "文字",
+                    "actions": [
+                    {
+                        "type": "message",
+                        "label": "動作 1",
+                        "text": "動作 1"
+                    },
+                    {
+                        "type": "message",
+                        "label": "動作 2",
+                        "text": "動作 2"
+                    }
+                    ]
+                }
+                ]
+            }
+        }
     )
     line_bot_api.reply_message(event.reply_token, template_message)
-
 
 # ========主程式==========
 if __name__ == "__main__":
