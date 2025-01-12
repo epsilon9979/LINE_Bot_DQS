@@ -49,42 +49,69 @@ def callback():
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-
     template_message = TemplateSendMessage(
-            alt_text='Alternative text',
-            template={
-                "type": "buttons",
-                "thumbnailImageUrl": "https://i.imgur.com/lbORsBH.png",
-                "title": "選擇",
-                "text": "哪一塊",
-                "actions": [
-                    {
-                        "type": "message",
-                        "label": "第一塊",
-                        "text": "動作 1"
+        alt_text='pratice',
+        template={
+            "size": {
+                "width": 2500,
+                "height": 843
+            },
+            "selected": true,
+            "name": "圖文選單 1",
+            "chatBarText": "查看更多資訊",
+            "areas": [
+                {
+                    "bounds": {
+                        "x": 2,
+                        "y": 0,
+                        "width": 617,
+                        "height": 837
                     },
-                    {
+                    "action": {
                         "type": "message",
-                        "label": "第二塊",
-                        "text": "動作 2"
-                    },
-                    {
-                        "type": "message",
-                        "label": "第三塊",
-                        "text": "動作 3"
-                    },
-                    {
-                        "type": "message",
-                        "label": "第四塊",
-                        "text": "動作 4"
+                        "text": "111"
                     }
-                ]
-            }
-        )
-
-
-    line_bot_api.reply_message(event.reply_token, template_message)
-
+                },
+                {
+                    "bounds": {
+                        "x": 621,
+                        "y": 0,
+                        "width": 638,
+                        "height": 837
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "222"
+                    }
+                },
+                {
+                    "bounds": {
+                        "x": 1261,
+                        "y": 0,
+                        "width": 615,
+                        "height": 835
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "333"
+                    }
+                },
+                {
+                    "bounds": {
+                        "x": 1875,
+                        "y": 0,
+                        "width": 623,
+                        "height": 835
+                    },
+                    "action": {
+                        "type": "message",
+                        "text": "444"
+                    }
+                }
+            ]
+        }
+    )
+    line_bot_api.reply_message(event.reply_token,template_message)
 
 # ========主程式==========
 if __name__ == "__main__":
