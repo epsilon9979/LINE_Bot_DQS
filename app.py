@@ -52,93 +52,90 @@ def handle_message(event):
     template_message = TemplateSendMessage(
         alt_text='pratice',
         template={
-            "type": "template",
-            "altText": "this is a carousel template",
-            "template": {
-                "type": "carousel",
-                "columns": [
+            "type": "carousel",
+            "columns": [
+            {
+                "title": "標題",
+                "text": "文字",
+                "actions": [
                 {
-                    "title": "標題",
-                    "text": "文字",
-                    "actions": [
-                    {
-                        "type": "message",
-                        "label": "動作 1",
-                        "text": "動作 1"
-                    },
-                    {
-                        "type": "message",
-                        "label": "動作 2",
-                        "text": "動作 2"
-                    }
-                    ]
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
                 },
                 {
-                    "title": "標題",
-                    "text": "文字",
-                    "actions": [
-                    {
-                        "type": "message",
-                        "label": "動作 1",
-                        "text": "動作 1"
-                    },
-                    {
-                        "type": "message",
-                        "label": "動作 2",
-                        "text": "動作 2"
-                    }
-                    ]
+                    "type": "message",
+                    "label": "動作 2",
+                    "text": "動作 2"
+                }
+                ]
+            },
+            {
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
                 },
                 {
-                    "title": "標題",
-                    "text": "文字",
-                    "actions": [
-                    {
-                        "type": "message",
-                        "label": "動作 1",
-                        "text": "動作 1"
-                    },
-                    {
-                        "type": "message",
-                        "label": "動作 2",
-                        "text": "動作 2"
-                    }
-                    ]
+                    "type": "message",
+                    "label": "動作 2",
+                    "text": "動作 2"
+                }
+                ]
+            },
+            {
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
                 },
                 {
-                    "title": "標題",
-                    "text": "文字",
-                    "actions": [
-                    {
-                        "type": "message",
-                        "label": "動作 1",
-                        "text": "動作 1"
-                    },
-                    {
-                        "type": "message",
-                        "label": "動作 2",
-                        "text": "動作 2"
-                    }
-                    ]
+                    "type": "message",
+                    "label": "動作 2",
+                    "text": "動作 2"
+                }
+                ]
+            },
+            {
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
                 },
                 {
-                    "title": "標題",
-                    "text": "文字",
-                    "actions": [
-                    {
-                        "type": "message",
-                        "label": "動作 1",
-                        "text": "動作 1"
-                    },
-                    {
-                        "type": "message",
-                        "label": "動作 2",
-                        "text": "動作 2"
-                    }
-                    ]
+                    "type": "message",
+                    "label": "動作 2",
+                    "text": "動作 2"
+                }
+                ]
+            },
+            {
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
+                },
+                {
+                    "type": "message",
+                    "label": "動作 2",
+                    "text": "動作 2"
                 }
                 ]
             }
+            ]
+            
         }
     )
     line_bot_api.reply_message(event.reply_token, template_message)
