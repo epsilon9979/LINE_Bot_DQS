@@ -40,12 +40,13 @@ def callback():
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
+    AAA = 'ABCDEFG'
     template_message = TemplateSendMessage(
         alt_text = "this is a carousel template",
         template = {
             "type": "carousel",
             "columns":[
-                {"title": "A", "text": "aaa", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
+                {"title": "A", "text": "aaa", "actions": [{"type": "message", "label": "選擇", "text": f"A\n{AAA}"}] },
                 {"title": "B", "text": "bbb", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
                 {"title": "C", "text": "c", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
                 {"title": "D", "text": "d", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
