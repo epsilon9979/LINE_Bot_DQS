@@ -7,7 +7,7 @@ import os
 import re
 
 # ======這裡是呼叫的檔案內容=====
-# from functions.questions import question
+from functions.questions import question
 # from Message_test2 import *
 # from Message_test3 import *
 
@@ -40,21 +40,42 @@ def callback():
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    template_message = TemplateSendMessage(
-        altText = "this is a carousel template",
-        template = {
-            "type": "carousel",
-            "columns":[
-                {"title": "A", "text": " ", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
-                {"title": "B", "text": " ", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
-                {"title": "C", "text": " ", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
-                {"title": "D", "text": " ", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
-            ]
-        }
-    )
 
-    
-    line_bot_api.reply_message(event.reply_token, template_message)
+    template_message = TemplateSendMessage(
+            alt_text='Alternative text',
+            template={
+                "type": "buttons",
+                "thumbnailImageUrl": "https://i.imgur.com/lbORsBH.png",
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "第一塊",
+                    "text": "動作 1"
+                },
+                {
+                    "type": "message",
+                    "label": "第二塊",
+                    "text": "動作 2"
+                },
+                {
+                    "type": "message",
+                    "label": "第三塊",
+                    "text": "動作 3"
+                },
+                {
+                    "type": "message",
+                    "label": "第四塊",
+                    "text": "動作 4"
+                }
+                ]
+            }
+        )
+
+    for county in category:
+        if re.match(county, message):
+            line_bot_api.reply_message(event.reply_token, question(county))
 
 
 # ========主程式==========
