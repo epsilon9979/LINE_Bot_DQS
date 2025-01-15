@@ -41,63 +41,56 @@ def callback():
 def handle_message(event):
     message = event.message.text
     template_message = TemplateSendMessage(
-        "type": "carousel",
-        "columns": [
-        {
-            "title": "A",
-            "text": " 文化部等機關努力發揚臺灣各族群的傳統飲食與食材料理方式",
-            "actions": [
+        alt_Text = "this is a carousel template",
+        template = {
+            "type": "carousel",
+            "columns": [
             {
-                "type": "message",
-                "label": "選擇",
-                "text": "A"
-            }
-            ]
-        },
-        {
-            "title": "標題",
-            "text": "文字",
-            "actions": [
+                "title": "A",
+                "text": " 文化部等機關努力發揚臺灣各族群的傳統飲食與食材料理方式",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "選擇",
+                    "text": "A"
+                }
+                ]
+            },
             {
-                "type": "message",
-                "label": "動作 1",
-                "text": "動作 1"
-            }
-            ]
-        },
-        {
-            "title": "標題",
-            "text": "文字",
-            "actions": [
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
+                }
+                ]
+            },
             {
-                "type": "message",
-                "label": "動作 1",
-                "text": "動作 1"
-            }
-            ]
-        },
-        {
-            "title": "標題",
-            "text": "文字",
-            "actions": [
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
+                }
+                ]
+            },
             {
-                "type": "message",
-                "label": "動作 1",
-                "text": "動作 1"
+                "title": "標題",
+                "text": "文字",
+                "actions": [
+                {
+                    "type": "message",
+                    "label": "動作 1",
+                    "text": "動作 1"
+                }
+                ]
             }
             ]
         }
-        ]
-        # alt_Text = "this is a carousel template",
-        # template = {
-        #     "type": "carousel",
-        #     "columns":[
-        #         {"title": "A", "text": "a", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
-        #         {"title": "B", "text": "b", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
-        #         {"title": "C", "text": "c", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
-        #         {"title": "D", "text": "d", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
-        #     ]
-        # }
     )
 
     
