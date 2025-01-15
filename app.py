@@ -45,7 +45,7 @@ def handle_message(event):
         template = {
             "type": "carousel",
             "columns":[
-                {"title": "A", "text": "a", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
+                {"title": "A", "text": "aaa", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
                 {"title": "B", "text": "b", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
                 {"title": "C", "text": "c", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
                 {"title": "D", "text": "d", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }

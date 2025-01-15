@@ -1,0 +1,132 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": false,
+  "name": "直轄市 & 重點議題",
+  "chatBarText": "查看更多資訊",
+  "areas": [
+    {
+      "bounds": {
+        "x": 235,
+        "y": 329,
+        "width": 472,
+        "height": 231
+      },
+      "action": {
+        "type": "message",
+        "text": "臺北市"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1013,
+        "y": 335,
+        "width": 472,
+        "height": 231
+      },
+      "action": {
+        "type": "message",
+        "text": "新北市"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1791,
+        "y": 335,
+        "width": 474,
+        "height": 229
+      },
+      "action": {
+        "type": "message",
+        "text": "桃園市"
+      }
+    },
+    {
+      "bounds": {
+        "x": 237,
+        "y": 699,
+        "width": 470,
+        "height": 228
+      },
+      "action": {
+        "type": "message",
+        "text": "臺中市"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1009,
+        "y": 697,
+        "width": 480,
+        "height": 237
+      },
+      "action": {
+        "type": "message",
+        "text": "臺南市"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1793,
+        "y": 699,
+        "width": 470,
+        "height": 232
+      },
+      "action": {
+        "type": "message",
+        "text": "高雄市"
+      }
+    },
+    {
+      "bounds": {
+        "x": 158,
+        "y": 1132,
+        "width": 624,
+        "height": 348
+      },
+      "action": {
+        "type": "message",
+        "text": "國際議題"
+      }
+    },
+    {
+      "bounds": {
+        "x": 932,
+        "y": 1130,
+        "width": 630,
+        "height": 341
+      },
+      "action": {
+        "type": "message",
+        "text": "能源議題"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1714,
+        "y": 1132,
+        "width": 623,
+        "height": 347
+      },
+      "action": {
+        "type": "message",
+        "text": "防災資訊"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1474,
+        "y": 4,
+        "width": 1022,
+        "height": 197
+      },
+      "action": {
+        "type": "richmenuswitch",
+        "richMenuAliasId": "menu_b",
+        "data": "richmenu-changed-to-b"
+      }
+    }
+  ]
+}
