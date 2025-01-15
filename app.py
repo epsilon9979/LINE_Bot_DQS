@@ -41,37 +41,17 @@ def callback():
 def handle_message(event):
     message = event.message.text
     template_message = TemplateSendMessage(
-        alt_text='JASON練習',
-        template={
-            "type": "confirm",
-            "actions": [
-            {
-                "type": "message",
-                "label": "是",
-                "text": "是"
-            },
-            {
-                "type": "message",
-                "label": "否",
-                "text": "否"
-            }
-            ],
-            "text": "您確定嗎？"
+        alt_Text = "this is a carousel template",
+        template = {
+            "type": "carousel",
+            "columns":[
+                {"title": "A", "text": "a", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
+                {"title": "B", "text": "b", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
+                {"title": "C", "text": "c", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
+                {"title": "D", "text": "d", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
+            ]
         }
     )
-
-    # template_message = TemplateSendMessage(
-    #     altText = "this is a carousel template",
-    #     template = {
-    #         "type": "carousel",
-    #         "columns":[
-    #             {"title": "A", "text": "a", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
-    #             {"title": "B", "text": "b", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
-    #             {"title": "C", "text": "c", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
-    #             {"title": "D", "text": "d", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
-    #         ]
-    #     }
-    # )
 
     
     line_bot_api.reply_message(event.reply_token, template_message)
