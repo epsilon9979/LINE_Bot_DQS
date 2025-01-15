@@ -46,7 +46,7 @@ def handle_message(event):
             "type": "carousel",
             "columns":[
                 {"title": "A", "text": "aaa", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
-                {"title": "B", "text": "b", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
+                {"title": "B", "text": "bbb", "actions": [{"type": "message", "label": "選擇", "text": "B"}] },
                 {"title": "C", "text": "c", "actions": [{"type": "message", "label": "選擇", "text": "C"}] },
                 {"title": "D", "text": "d", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
             ]
