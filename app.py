@@ -40,9 +40,10 @@ def callback():
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    template_message = TemplateSendMessage(
-        altText = "this is a carousel template",
-        template = {
+    template_message = TemplateSendMessage{
+        "type" : "template",
+        "altText" : "this is a carousel template",
+        "template" : {
             "type": "carousel",
             "columns":[
                 {"title": "A", "text": " ", "actions": [{"type": "message", "label": "選擇", "text": "A"}] },
@@ -51,7 +52,7 @@ def handle_message(event):
                 {"title": "D", "text": " ", "actions": [{"type": "message", "label": "選擇", "text": "D"}] }
             ]
         }
-    )
+    }
 
     
     line_bot_api.reply_message(event.reply_token, template_message)
