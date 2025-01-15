@@ -35,24 +35,29 @@ def callback():
         abort(400)
     return "OK"
 
-# ========訊息傳遞區塊==========
 ##### 基本上程式編輯都在這個function #####
+#處理訊息
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
     template_message = TemplateSendMessage(
-        alt_Text = "this is a carousel template",
-        template = {
+        alt_text='JASON練習',
+        template={
             "type": "carousel",
             "columns": [
             {
-                "title": "A",
-                "text": " 文化部等機關努力發揚臺灣各族群的傳統飲食與食材料理方式",
+                "title": "標題",
+                "text": "文字",
                 "actions": [
                 {
                     "type": "message",
-                    "label": "選擇",
-                    "text": "A"
+                    "label": "動作 1",
+                    "text": "動作 1"
+                },
+                {
+                    "type": "message",
+                    "label": "動作 2",
+                    "text": "動作 2"
                 }
                 ]
             },
@@ -64,34 +69,18 @@ def handle_message(event):
                     "type": "message",
                     "label": "動作 1",
                     "text": "動作 1"
-                }
-                ]
-            },
-            {
-                "title": "標題",
-                "text": "文字",
-                "actions": [
+                },
                 {
                     "type": "message",
-                    "label": "動作 1",
-                    "text": "動作 1"
-                }
-                ]
-            },
-            {
-                "title": "標題",
-                "text": "文字",
-                "actions": [
-                {
-                    "type": "message",
-                    "label": "動作 1",
-                    "text": "動作 1"
+                    "label": "動作 2",
+                    "text": "動作 2"
                 }
                 ]
             }
             ]
-        }
+        }#json貼在這裡
     )
+
 
     
     line_bot_api.reply_message(event.reply_token, template_message)
