@@ -77,7 +77,7 @@ def handle_message(event):
                         "text": " 由於美國政府對 TikTok 的潛在禁令，許多美國用戶開始尋找替代性的社交媒體應用。而中國社交媒體應用小紅書（Xiaohongshu，美國用戶常常縮寫為 RedNote）在最近一週 的美國手機下載量翻了近三倍，並在美國 App Store 的排名中一度攀升至首位，成為美國用戶選擇的主要 TikTok 替代方案。",
                         "color": "#FFFFFF",
                         "position": "relative",
-                        "wrap": true
+                        "wrap": True
                     }
                     ],
                     "spacing": "md",
@@ -163,7 +163,7 @@ def handle_message(event):
             },
             "styles": {
                 "footer": {
-                "separator": true
+                "separator": True
                 }
             }
             }
