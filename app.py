@@ -44,154 +44,122 @@ def handle_message(event):
         alt_text = 'answer',
         contents = {
             "type": "bubble",
-            "hero": {
-                "type": "image",
-                "url": "https://developers-resource.landpress.line.me/fx/img/01_1_cafe.png",
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover",
-                "action": {
-                "type": "uri",
-                "uri": "https://line.me/"
-                }
-            },
             "body": {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
                 {
                     "type": "text",
-                    "text": "Brown Cafe",
+                    "text": "恭喜答對",
                     "weight": "bold",
-                    "size": "xl"
+                    "color": "#FF0000",
+                    "size": "xxl"
+                },
+                {
+                    "type": "text",
+                    "text": "正確答案是 A",
+                    "weight": "bold",
+                    "size": "xxl",
+                    "margin": "md",
+                    "color": "#FF0000"
+                },
+                {
+                    "type": "separator",
+                    "margin": "lg",
+                    "color": "#22FF00"
                 },
                 {
                     "type": "box",
-                    "layout": "baseline",
-                    "margin": "md",
+                    "layout": "vertical",
                     "contents": [
-                    {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
-                    },
-                    {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
-                    },
-                    {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
-                    },
-                    {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
-                    },
-                    {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://developers-resource.landpress.line.me/fx/img/review_gray_star_28.png"
-                    },
                     {
                         "type": "text",
-                        "text": "4.0",
-                        "size": "sm",
-                        "color": "#999999",
-                        "margin": "md",
-                        "flex": 0
+                        "text": " 由於美國政府對 TikTok 的潛在禁令，許多美國用戶開始尋找替代性的社交媒體應用。而中國社交媒體應用小紅書（Xiaohongshu，美國用戶常常縮寫為 RedNote）在最近一週 的美國手機下載量翻了近三倍，並在美國 App Store 的排名中一度攀升至首位，成為美國用戶選擇的主要 TikTok 替代方案。",
+                        "color": "#FFFFFF",
+                        "position": "relative",
+                        "wrap": True
                     }
-                    ]
+                    ],
+                    "spacing": "md",
+                    "position": "relative",
+                    "margin": "xxl",
+                    "alignItems": "center"
+                },
+                {
+                    "type": "separator",
+                    "margin": "lg",
+                    "color": "#22FF00"
                 },
                 {
                     "type": "box",
-                    "layout": "vertical",
-                    "margin": "lg",
-                    "spacing": "sm",
+                    "layout": "horizontal",
                     "contents": [
                     {
                         "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
+                        "layout": "vertical",
                         "contents": [
                         {
                             "type": "text",
-                            "text": "Place",
-                            "color": "#aaaaaa",
-                            "size": "sm",
-                            "flex": 1
+                            "text": "資料日期",
+                            "weight": "regular",
+                            "decoration": "none",
+                            "align": "center",
+                            "size": "md",
+                            "style": "normal",
+                            "gravity": "center",
+                            "margin": "sm",
+                            "color": "#FFFFFF",
+                            "offsetStart": "none",
+                            "offsetEnd": "none"
                         },
                         {
                             "type": "text",
-                            "text": "Flex Tower, 7-7-4 Midori-ku, Tokyo",
-                            "wrap": True,
-                            "color": "#666666",
-                            "size": "sm",
-                            "flex": 5
+                            "text": "2024/12/12",
+                            "gravity": "center",
+                            "size": "md",
+                            "align": "center",
+                            "color": "#FFFFFF"
                         }
-                        ]
+                        ],
+                        "position": "relative",
+                        "alignItems": "center",
+                        "spacing": "sm",
+                        "margin": "sm",
+                        "offsetStart": "none",
+                        "offsetEnd": "xxl",
+                        "paddingStart": "none",
+                        "paddingEnd": "none",
+                        "justifyContent": "space-evenly"
                     },
                     {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                        {
-                            "type": "text",
-                            "text": "Time",
-                            "color": "#aaaaaa",
-                            "size": "sm",
-                            "flex": 1
+                        "type": "button",
+                        "action": {
+                        "type": "uri",
+                        "label": "資料原文",
+                        "uri": "http://linecorp.com/"
                         },
-                        {
-                            "type": "text",
-                            "text": "10:00 - 23:00",
-                            "wrap": True,
-                            "color": "#666666",
-                            "size": "sm",
-                            "flex": 5
-                        }
-                        ]
+                        "gravity": "bottom",
+                        "margin": "none",
+                        "style": "primary",
+                        "height": "md",
+                        "offsetTop": "none",
+                        "offsetStart": "none"
                     }
-                    ]
-                }
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "sm",
-                "contents": [
-                {
-                    "type": "button",
-                    "style": "link",
-                    "height": "sm",
-                    "action": {
-                    "type": "uri",
-                    "label": "CALL",
-                    "uri": "https://line.me/"
-                    }
-                },
-                {
-                    "type": "button",
-                    "style": "link",
-                    "height": "sm",
-                    "action": {
-                    "type": "uri",
-                    "label": "WEBSITE",
-                    "uri": "https://line.me/"
-                    }
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "margin": "sm"
+                    ],
+                    "position": "relative",
+                    "margin": "xxl",
+                    "spacing": "xxl",
+                    "borderWidth": "none"
                 }
                 ],
-                "flex": 0
+                "backgroundColor": "#000000",
+                "borderWidth": "medium",
+                "borderColor": "#22FF00"
+            },
+            "styles": {
+                "footer": {
+                "separator": True
+                }
             }
         }
 
