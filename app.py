@@ -41,7 +41,7 @@ def handle_message(event):
     data = record()
     cursor, cnx = data.setting()
     question = data.fetch(cursor, cnx, 'international', 'id', None)[0]
-    text_message = TextSendMessage("12345")
+    text_message = TextSendMessage(text="12345")
     
     line_bot_api.reply_message(event.reply_token, text_message)
 
