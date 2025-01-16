@@ -22,5 +22,5 @@ def question(item):
     # database.fetch = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
     
     description = f"{item}-{result[0]}\n{result[1]}"
-    data = [TextSendMessage(description), result, item]
+    data = [TextSendMessage(text = description), result, item]
     return data
