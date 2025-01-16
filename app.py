@@ -163,7 +163,7 @@ def handle_message(event):
             },
             "styles": {
                 "footer": {
-                "separator": TRUE
+                "separator": True
                 }
             }
             }
