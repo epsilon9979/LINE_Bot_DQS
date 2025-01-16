@@ -7,7 +7,9 @@ import os
 import re
 
 # ======這裡是呼叫的檔案內容=====
-from functions.database import record
+from functions.questions import question
+from functions.choices import choice
+from functions.answers import answer
 
 # ========ChatBot開始==========
 load_dotenv()
@@ -37,12 +39,19 @@ def callback():
 ##### 基本上程式編輯都在這個function #####
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = event.message.text
-    data = record()
-    cursor, cnx = data.setting()
-    question = data.fetch(cursor, cnx, 'international', 'id', None)[0]
-    text_message = TextSendMessage(question)
-    line_bot_api.reply_message(event.reply_token, text_message)
+    response = event.message.text
+    
+    for item in category:
+        if re.match(item, response):
+            product_1 = question(item)
+            product_2 = choice(product_1)
+            line_bot_api.reply_message(event.reply_token, product_1[0])
+            line_bot_api.reply_message(event.reply_token, product_2)
+            
+    if response in [f"{response}-{product_1[1][0]}\nA", f"{response}-{product_1[1][0]}\nB", f"{response}-{product_1[1][0]}\nC", f"{response}-{product_1[1][0]}\nD"]:
+        product_3 = answer(response)
+        line_bot_api.reply_message(event.reply_token, product_3)
+    
 
 
 # ========主程式==========
