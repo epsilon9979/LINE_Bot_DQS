@@ -42,7 +42,7 @@ def handle_message(event):
     message = event.message.text
     template_message = FlexSendMessage(
         alt_text = 'answer',
-        content = {
+        contents = {
             "type": "bubble",
             "body": {
                 "type": "box",
@@ -163,7 +163,7 @@ def handle_message(event):
             },
             "styles": {
                 "footer": {
-                "separator": True
+                "separator": TRUE
                 }
             }
             }
