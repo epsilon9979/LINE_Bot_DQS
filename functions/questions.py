@@ -20,5 +20,7 @@ def question(item):
     criteria = f"id = '{number[0]}'"
     result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
     # database.fetch = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
-    data = [TextSendMessage(result[1]), result, item]
+    
+    description = f"{item}-{result[0]}\n{result[1]}"
+    data = [TextSendMessage(description), result, item]
     return data

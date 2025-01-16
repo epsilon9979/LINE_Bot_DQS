@@ -9,17 +9,23 @@ class record:
     
     def setting(self):
         try:
-            cnx = mysql.connector.connect(user='root', password='999999',host='127.0.0.1')
+            cnx = mysql.connector.connect(
+                user='linebot_dqs',                # 資料庫用戶名稱
+                password='999999',                # 資料庫密碼
+                host='140.118.138.234',           # 本機的公網 IP
+                database='questions_warehouse',    # 要連接的資料庫名稱（請改為你的資料庫名稱）
+                port=3306                         # MySQL 默認埠號
+            )
+            cursor = cnx.cursor()
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print("Something is wrong with your user name or password")
             elif err.errno == errorcode.ER_BAD_DB_ERROR:
                 print("Database does not exist")
             else:
-                print(err)    
-                 
-        cursor = cnx.cursor()
-        return cursor, cnx
+                print(err) 
+                           
+        return cursor, cnx 
     
         
     def append(self, cursor, cnx, content, which_table):

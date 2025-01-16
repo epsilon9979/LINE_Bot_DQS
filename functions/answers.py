@@ -21,14 +21,14 @@ def answer(response):
         
     flex_message = FlexSendMessage(
         alt_text = 'answer',
-        content = {
+        contents = {
             "type": "bubble",
             "body": {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
                 {"type": "text", "text": text_top, "weight": "bold", "color": text_color, "size": "xxl"},
-                {"type": "text", "text": f"正確答案是 {question_2[0][6]}", "weight": "bold", "size": "xxl", "margin": "md", "color": text_color},
+                {"type": "text", "text": f"正確答案為 {question_2[0][6]}", "weight": "bold", "size": "xxl", "margin": "md", "color": text_color},
                 {"type": "separator", "margin": "lg", "color": border_color},
                 {"type": "box", "layout": "vertical","contents": [{
                         "type": "text",

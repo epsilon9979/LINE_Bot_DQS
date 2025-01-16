@@ -7,9 +7,9 @@ import os
 import re
 
 # ======這裡是呼叫的檔案內容=====
-# from functions.questions import question
-# from Message_test2 import *
-# from Message_test3 import *
+from functions.questions import question
+from functions.choices import choice
+from functions.answers import answer
 
 # ========ChatBot開始==========
 load_dotenv()
@@ -39,134 +39,19 @@ def callback():
 ##### 基本上程式編輯都在這個function #####
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = event.message.text
-    flex_message = FlexSendMessage(
-        alt_text = 'answer',
-        contents = {
-            "type": "bubble",
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                {
-                    "type": "text",
-                    "text": "恭喜答對",
-                    "weight": "bold",
-                    "color": "#FF0000",
-                    "size": "xxl"
-                },
-                {
-                    "type": "text",
-                    "text": "正確答案是 A",
-                    "weight": "bold",
-                    "size": "xxl",
-                    "margin": "md",
-                    "color": "#FF0000"
-                },
-                {
-                    "type": "separator",
-                    "margin": "lg",
-                    "color": "#22FF00"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "text",
-                        "text": " 由於美國政府對 TikTok 的潛在禁令，許多美國用戶開始尋找替代性的社交媒體應用。而中國社交媒體應用小紅書（Xiaohongshu，美國用戶常常縮寫為 RedNote）在最近一週 的美國手機下載量翻了近三倍，並在美國 App Store 的排名中一度攀升至首位，成為美國用戶選擇的主要 TikTok 替代方案。",
-                        "color": "#FFFFFF",
-                        "position": "relative",
-                        "wrap": True
-                    }
-                    ],
-                    "spacing": "md",
-                    "position": "relative",
-                    "margin": "xxl",
-                    "alignItems": "center"
-                },
-                {
-                    "type": "separator",
-                    "margin": "lg",
-                    "color": "#22FF00"
-                },
-                {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                        {
-                            "type": "text",
-                            "text": "資料日期",
-                            "weight": "regular",
-                            "decoration": "none",
-                            "align": "center",
-                            "size": "md",
-                            "style": "normal",
-                            "gravity": "center",
-                            "margin": "sm",
-                            "color": "#FFFFFF",
-                            "offsetStart": "none",
-                            "offsetEnd": "none"
-                        },
-                        {
-                            "type": "text",
-                            "text": "2024/12/12",
-                            "gravity": "center",
-                            "size": "md",
-                            "align": "center",
-                            "color": "#FFFFFF"
-                        }
-                        ],
-                        "position": "relative",
-                        "alignItems": "center",
-                        "spacing": "sm",
-                        "margin": "sm",
-                        "offsetStart": "none",
-                        "offsetEnd": "xxl",
-                        "paddingStart": "none",
-                        "paddingEnd": "none",
-                        "justifyContent": "space-evenly"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                        "type": "uri",
-                        "label": "資料原文",
-                        "uri": "http://linecorp.com/"
-                        },
-                        "gravity": "bottom",
-                        "margin": "none",
-                        "style": "primary",
-                        "height": "md",
-                        "offsetTop": "none",
-                        "offsetStart": "none"
-                    }
-                    ],
-                    "position": "relative",
-                    "margin": "xxl",
-                    "spacing": "xxl",
-                    "borderWidth": "none"
-                }
-                ],
-                "backgroundColor": "#000000",
-                "borderWidth": "medium",
-                "borderColor": "#22FF00"
-            },
-            "styles": {
-                "footer": {
-                "separator": True
-                }
-            }
-        }
-
-    )
-
+    response = event.message.text
     
-    line_bot_api.reply_message(event.reply_token, flex_message)
+    for item in category:
+        if re.match(item, response):
+            product_1 = question(item)
+            product_2 = choice(product_1)
+            line_bot_api.reply_message(event.reply_token, product_1[0])
+            line_bot_api.reply_message(event.reply_token, product_2)
+            
+    if response in [f"{response}-{product_1[1][0]}\nA", f"{response}-{product_1[1][0]}\nB", f"{response}-{product_1[1][0]}\nC", f"{response}-{product_1[1][0]}\nD"]:
+        product_3 = answer(response)
+        line_bot_api.reply_message(event.reply_token, product_3)
+    
 
 
 # ========主程式==========
