@@ -10,9 +10,9 @@ class record:
     def setting(self):
         try:
             cnx = mysql.connector.connect(
-                user='linebot_dqs',                # 資料庫用戶名稱
+                user='vercel',                # 資料庫用戶名稱
                 password='999999',                # 資料庫密碼
-                host='140.118.138.234',           # 本機的公網 IP
+                host='35.234.3.230',           # 本機的公網 IP
                 database='questions_warehouse',    # 要連接的資料庫名稱（請改為你的資料庫名稱）
                 port=3306                         # MySQL 默認埠號
             )
