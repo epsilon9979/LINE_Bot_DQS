@@ -49,7 +49,7 @@ def handle_message(event):
             if product_1[2] != "empty":
                 message.append(choice(product_1))
             
-    if response.split('\n')[1] in ["A", "B", "C", "D"]:
+    if '\n' in response:
         message.append( answer(response) )
         
     line_bot_api.reply_message(event.reply_token, message)
