@@ -25,6 +25,7 @@ class record:
                 print("Database does not exist")
             else:
                 print(err) 
+            print(f"Error: {err}")
             cursor = 0 ######################################################
             cnx = 0 ###################################################  
                     
