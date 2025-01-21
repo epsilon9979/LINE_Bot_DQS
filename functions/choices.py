@@ -20,17 +20,17 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     # cursor, cnx = database.setting()
     # database.append(cursor, cnx, question_2, data[2])
 
-    template_message = TemplateSendMessage(
-        alt_text = "pick up a correct option",
-        template = {
-            "type": "carousel",
-            "columns":[
-                {"title": "A", "text": random_options[0][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nA"}] },
-                {"title": "B", "text": random_options[1][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nB"}] },
-                {"title": "C", "text": random_options[2][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nC"}] },
-                {"title": "D", "text": random_options[3][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nD"}] }
-            ]
-        }
-    )
+    # template_message = TemplateSendMessage(
+    #     alt_text = "pick up a correct option",
+    #     template = {
+    #         "type": "carousel",
+    #         "columns":[
+    #             {"title": "A", "text": random_options[0][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nA"}] },
+    #             {"title": "B", "text": random_options[1][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nB"}] },
+    #             {"title": "C", "text": random_options[2][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nC"}] },
+    #             {"title": "D", "text": random_options[3][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nD"}] }
+    #         ]
+    #     }
+    # )
 
-    return template_message
+    return TextSendMessage(text = question_2[7])
