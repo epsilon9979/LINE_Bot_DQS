@@ -13,6 +13,7 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     for key, value in random_options.items():
         if data[1][6] in value:
             answer = ["A", "B", "C", "D"][key]
+    answer = "A"
     question_2 = (1000, data[1][1], random_options[0][1], random_options[1][1], random_options[2][1], random_options[3][1],
                 answer, data[1][7], data[1][8], data[1][9], data[1][10])
 
