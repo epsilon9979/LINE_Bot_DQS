@@ -47,7 +47,7 @@ def handle_message(event):
             product_1 = question(item)
             message.append(product_1[0])
             if product_1[2] == item:
-                message.append(choice[product_1])
+                message.append(choice(product_1))
     line_bot_api.reply_message(event.reply_token, message)
             
     if response in [f"{response}-{product_1[1][0]}\nA", f"{response}-{product_1[1][0]}\nB", f"{response}-{product_1[1][0]}\nC", f"{response}-{product_1[1][0]}\nD"]:
