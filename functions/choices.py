@@ -2,7 +2,7 @@ from linebot.models import *
 from functions.database import record
 import random
 
-def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url), item]
+def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url), which_table, item]
 
     #增加正確選項的隨機性
     options = list(data[1][2:6]) 
@@ -26,10 +26,10 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
         template = {
             "type": "carousel",
             "columns":[
-                {"title": "A", "text": random_options[0][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nA"}] },
-                {"title": "B", "text": random_options[1][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nB"}] },
-                {"title": "C", "text": random_options[2][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nC"}] },
-                {"title": "D", "text": random_options[3][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[2]}-{data[1][0]}\nD"}] }
+                {"title": "A", "text": random_options[0][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{data[1][0]}\nA"}] },
+                {"title": "B", "text": random_options[1][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{data[1][0]}\nB"}] },
+                {"title": "C", "text": random_options[2][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{data[1][0]}\nC"}] },
+                {"title": "D", "text": random_options[3][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{data[1][0]}\nD"}] }
             ]
         }
     )
