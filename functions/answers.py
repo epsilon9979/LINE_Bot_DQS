@@ -81,4 +81,4 @@ def answer(response):
         }
     )
     
-    return flex_message
+    return TextSendMessage(text=123456)
