@@ -43,7 +43,7 @@ def handle_message(event):
     
     message=[]
     for item in category:
-        if re.match(item, response):
+        if item == response:
             product_1 = question(item)
             message.append(product_1[0])
             if product_1[2] != "empty":
