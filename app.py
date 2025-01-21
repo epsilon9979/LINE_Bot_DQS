@@ -41,13 +41,14 @@ def callback():
 def handle_message(event):
     response = event.message.text
     
+    message=[]
     for item in category:
         if re.match(item, response):
             product_1 = question(item)
-            line_bot_api.reply_message(event.reply_token, choice(product_1))
-            line_bot_api.reply_message(event.reply_token, product_1[0])
+            message.append(product_1[0])
             if product_1[2] == item:
-                line_bot_api.reply_message(event.reply_token, choice(product_1))
+                message.append(choice[product_1])
+    line_bot_api.reply_message(event.reply_token, message)
             
     if response in [f"{response}-{product_1[1][0]}\nA", f"{response}-{product_1[1][0]}\nB", f"{response}-{product_1[1][0]}\nC", f"{response}-{product_1[1][0]}\nD"]:
         product_3 = answer(response)
