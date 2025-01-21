@@ -12,7 +12,7 @@ def question(item):
                     'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international'][index]
     if which_table not in database.show_tables(cursor):
         product = f"目前沒有 {item} 的相關題目"
-        return [TextSendMessage(text=product), 000, item]
+        return [TextSendMessage(text=product), "empty", item]
     database.delete(cursor, cnx, which_table, "id = '1000'") #確保沒有臨時性作答紀錄
     
     existed_id = database.fetch(cursor, cnx, which_table, 'id', None)
@@ -21,6 +21,6 @@ def question(item):
     result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
     # database.fetch = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
     
-    description = f"{item}-{result[0]}\n{result[1]}"
+    description = f"#{item}-{result[0]}\n{result[1]}"
     data = [TextSendMessage(text = description), result, item]
     return data
