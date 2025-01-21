@@ -41,8 +41,9 @@ def callback():
 def handle_message(event):
     response = event.message.text
     
-    if re.match("臺北市", response):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response))
+    for item in category:
+        if re.match(item, response):
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response))
     for item in category:
         if re.match(item, response):
             product_1 = question(item)
