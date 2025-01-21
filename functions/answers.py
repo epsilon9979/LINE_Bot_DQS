@@ -1,5 +1,5 @@
 from linebot.models import *
-from database import record
+from functions.database import record
 
 def answer(response): 
     mark, selection = response.split("\n")
