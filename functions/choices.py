@@ -4,7 +4,7 @@ import random
 
 def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url), item]
     #增加正確選項的隨機性
-    # options = list(data[1])[2:6] 
+    options = list(data[1])[2:6] 
     # random_options = {}
     # for i in range[0:4]:
     #     orin_option = options.pop( random.randint(0, len(options)-i) )
@@ -32,4 +32,4 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     #     }
     # )
     
-    return TextSendMessage(text = 123)
+    return TextSendMessage(text = 222)
