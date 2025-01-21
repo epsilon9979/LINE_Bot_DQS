@@ -43,9 +43,6 @@ def handle_message(event):
     
     for item in category:
         if re.match(item, response):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response))
-    for item in category:
-        if re.match(item, response):
             product_1 = question(item)
             # product_2 = choice(product_1)
             line_bot_api.reply_message(event.reply_token, product_1[0])
