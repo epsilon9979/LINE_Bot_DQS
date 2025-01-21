@@ -7,9 +7,9 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     #增加正確選項的隨機性
     options = list(data[1])[2:6] 
     random_options = {}
-    for i in range(0,4):
-        orin_option = options.pop( random.randint(0, len(options)-1) )
-        random_options[str(i)] = orin_option.split(")")
+    # for i in range(0,4):
+    #     orin_option = options.pop( random.randint(0, len(options)-1) )
+    #     random_options[str(i)] = orin_option.split(")")
     # for key, value in random_options.items():
     #     if data[1][6] in value:
     #         answer = ["A", "B", "C", "D"][int(key)]
