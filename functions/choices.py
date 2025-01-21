@@ -35,4 +35,4 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     #     }
     # )
 
-    return TextSendMessage(text = 87)
+    return TextSendMessage(text = random_options[1][1])
