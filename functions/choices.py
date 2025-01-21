@@ -3,7 +3,7 @@ from functions.database import record
 import random
 
 def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url), item]
-    
+
     #增加正確選項的隨機性
     options = list(data[1])[2:6] 
     random_options = {}
@@ -33,4 +33,4 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     #     }
     # )
 
-    return TextSendMessage(text = question_2[7])
+    return TextSendMessage(text = random_options[1])
