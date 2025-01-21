@@ -46,7 +46,7 @@ def handle_message(event):
         if re.match(item, response):
             product_1 = question(item)
             message.append(product_1[0])
-            if product_1[2] == item:
+            if product_1[2] != "empty":
                 message.append(choice(product_1))
             
     if response.split('\n')[1] in ["A", "B", "C", "D"]:
