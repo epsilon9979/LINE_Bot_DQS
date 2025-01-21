@@ -40,8 +40,8 @@ def handle_message(event):
     message = event.message.text
     data = record()
     cursor, cnx = data.setting()
-    # question = data.fetch(cursor, cnx, 'international', '*', None)[0][1]
-    text_message = TextSendMessage(text=cursor)
+    question = data.fetch(cursor, cnx, 'international', '*', None)[0][1]
+    text_message = TextSendMessage(text=question)
     line_bot_api.reply_message(event.reply_token, text_message)
 
 
