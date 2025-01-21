@@ -13,11 +13,10 @@ class record:
                 user='vercel',                # 資料庫用戶名稱
                 password='999999',                # 資料庫密碼
                 host='35.234.3.230',           # 公網 IP
-                # database='questions_warehouse',    # 要連接的資料庫名稱（請改為你的資料庫名稱）
+                database='questions_warehouse',    # 要連接的資料庫名稱（請改為你的資料庫名稱）
                 port=3306                         # MySQL 默認埠號
             )
             cursor = cnx.cursor()
-            cursor.execute("USE questions_warehouse") 
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print("Something is wrong with your user name or password")
