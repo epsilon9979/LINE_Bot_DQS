@@ -1,5 +1,5 @@
 from linebot.models import *
-from database import record
+from functions.database import record
 import random
 
 def question(item):
