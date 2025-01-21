@@ -44,9 +44,9 @@ def handle_message(event):
     for item in category:
         if re.match(item, response):
             product_1 = question(item)
-            product_2 = choice(product_1)
+            # product_2 = choice(product_1)
             line_bot_api.reply_message(event.reply_token, product_1[0])
-            line_bot_api.reply_message(event.reply_token, product_2)
+            # line_bot_api.reply_message(event.reply_token, product_2)
             
     if response in [f"{response}-{product_1[1][0]}\nA", f"{response}-{product_1[1][0]}\nB", f"{response}-{product_1[1][0]}\nC", f"{response}-{product_1[1][0]}\nD"]:
         product_3 = answer(response)
