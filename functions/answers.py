@@ -13,7 +13,7 @@ def answer(response):
     cursor, cnx = database.setting()
     question_2 = database.fetch(cursor, cnx, which_table, '*', 'id = 1000')
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
-    database.delete(cursor, cnx, county, "id = 1000") #刪除臨時性作答紀錄
+    database.delete(cursor, cnx, which_table, "id = 1000") #刪除臨時性作答紀錄
     if question_2[0][6] == selection:
         border_color = "#22FF00"
         text_color = "#22FF00"
