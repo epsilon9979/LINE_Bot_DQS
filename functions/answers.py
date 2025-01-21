@@ -19,7 +19,7 @@ def answer(response):
         text_color = "#22FF00"
         text_top = "恭喜答對！"
     else:
-        border_color = "##FF0000"
+        border_color = "#FF0000"
         text_color = "#FF0000"
         text_top = "很可惜，答錯了..."
         
