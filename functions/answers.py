@@ -85,8 +85,8 @@ def answer(response):
         }
     )
     
-    # return flex_message
-    if text_top == "恭喜答對！":
-        return TextSendMessage(text=000)
-    else:
-        return TextSendMessage(text=111)
+    return flex_message
+    # if text_top == "恭喜答對！":
+    #     return TextSendMessage(text=000)
+    # else:
+    #     return TextSendMessage(text=111)
