@@ -43,7 +43,7 @@ def handle_message(event):
     
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response))
     for item in category:
-        if re.match(item, response):
+        if re.match('臺北市', response):
             product_1 = question(item)
             # product_2 = choice(product_1)
             line_bot_api.reply_message(event.reply_token, product_1[0])
