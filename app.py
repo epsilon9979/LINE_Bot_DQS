@@ -41,6 +41,7 @@ def callback():
 def handle_message(event):
     response = event.message.text
     
+    mark = 0
     message=[]
     for item in category:
         if item == response:
@@ -48,14 +49,17 @@ def handle_message(event):
             message.append(product_1[0])
             if product_1[2] != "empty":
                 message.append(choice(product_1))
+            mark = 1
             
     if '\n' in response:
         message.append( answer(response) )
+        mark = 1
+    
+    if mark == 0:
+        message.append(TextSendMessage(text='本系統無法提供訊息輸入'))    
         
     line_bot_api.reply_message(event.reply_token, message)
     
-
-
 # ========主程式==========
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
