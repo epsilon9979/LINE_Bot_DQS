@@ -12,10 +12,17 @@ class record:
             cnx = mysql.connector.connect(
                 user='vercel',                         # 資料庫用戶名稱
                 password='iloveroyals941/O100659329',  # 資料庫密碼
-                host='35.234.3.230',                   # 公網 IP
+                host='150.107.58.178',                   # 公網 IP
                 database='questions_warehouse',        # 要連接的資料庫名稱（請改為你的資料庫名稱）
                 port=3306                              # MySQL 默認埠號
             )
+            # cnx = mysql.connector.connect(
+            #     user='vercel',                         # 資料庫用戶名稱
+            #     password='iloveroyals941/O100659329',  # 資料庫密碼
+            #     host='35.234.3.230',                   # 公網 IP
+            #     database='questions_warehouse',        # 要連接的資料庫名稱（請改為你的資料庫名稱）
+            #     port=3306                              # MySQL 默認埠號
+            # )
             cursor = cnx.cursor()
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
