@@ -7,7 +7,7 @@ class record:
         pass
     
     
-    def setting(self):
+    def setting(self): 
         try:
             cnx = mysql.connector.connect(
                 user='vercel',                         # 資料庫用戶名稱
