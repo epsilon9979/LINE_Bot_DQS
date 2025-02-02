@@ -12,7 +12,7 @@ class record:
             cnx = mysql.connector.connect(
                 user='vercel',                         # 資料庫用戶名稱
                 password='iloveroyals941/O100659329',  # 資料庫密碼
-                host='140.118.138.234',                   # 公網 IP
+                host='150.107.58.178',                   # 公網 IP
                 database='questions_warehouse',        # 要連接的資料庫名稱（請改為你的資料庫名稱）
                 port=3306                              # MySQL 默認埠號
             )
