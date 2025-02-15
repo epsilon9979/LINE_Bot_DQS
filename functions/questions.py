@@ -9,13 +9,13 @@ def question(item):
     index = counties.index(item)
     which_table = ['Keelung', 'New_Taipei', 'Taipei', 'Taoyuan', 'Hsinchu', 'Miaoli', 'Taichung',
                     'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
-                    'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international','energy'][index]
+                    'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international','energy','disaster'][index]
     if which_table not in database.show_tables(cursor):
         product = f"目前沒有 {item} 的相關題目"
         return [TextSendMessage(text=product), "empty", "empty"]
     database.delete(cursor, cnx, which_table, "id = 1000") #確保沒有臨時性作答紀錄
     
-    existed_id = database.fetch(cursor, cnx, which_table, 'id', None) 
+    existed_id = database.fetch(cursor, cnx, which_table, 'id', None) #[(1,), (2,), (3,)...]
     number = random.choice(existed_id)
     criteria = f"id = {number[0]}"
     result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
