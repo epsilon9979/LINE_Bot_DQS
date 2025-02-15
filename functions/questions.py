@@ -9,7 +9,7 @@ def question(item):
     index = counties.index(item)
     which_table = ['Keelung', 'New_Taipei', 'Taipei', 'Taoyuan', 'Hsinchu', 'Miaoli', 'Taichung',
                     'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
-                    'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international'][index]
+                    'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international','energy'][index]
     if which_table not in database.show_tables(cursor):
         product = f"目前沒有 {item} 的相關題目"
         return [TextSendMessage(text=product), "empty", "empty"]

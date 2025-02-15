@@ -8,7 +8,7 @@ def answer(response):
     index = counties.index(county)
     which_table = ['Keelung', 'New_Taipei', 'Taipei', 'Taoyuan', 'Hsinchu', 'Miaoli', 'Taichung',
                     'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
-                    'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international'][index]
+                    'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international', 'energy'][index]
     database = record()
     cursor, cnx = database.setting()
     question_2 = database.fetch(cursor, cnx, which_table, '*', 'id = 1000')
