@@ -11,6 +11,8 @@ def answer(response):
                     'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international', 'energy'][index]
     database = record()
     cursor, cnx = database.setting()
+    if 1000 not in database.fetch(cursor, cnx, which_table, 'id', None):
+        return TextSendMessage(text = "此題已經作答完畢，請從新選擇題型。")
     question_2 = database.fetch(cursor, cnx, which_table, '*', 'id = 1000')
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
     database.delete(cursor, cnx, which_table, "id = 1000") #刪除臨時性作答紀錄
