@@ -34,7 +34,40 @@ class record:
                     
         return cursor, cnx 
     
+    
+    def create_table(self, cursor, name):
+        TABLES = {}
+        TABLES[name] = (
+            f"CREATE TABLE {name} ("
+            "  `id` int NOT NULL,"
+            "  `questions` varchar(1000) NOT NULL,"
+            "  `optionA` varchar(100) NOT NULL,"
+            "  `optionB` varchar(100) NOT NULL,"
+            "  `optionC` varchar(100) NOT NULL,"
+            "  `optionD` varchar(100) NOT NULL,"
+            "  `answer` varchar(100) NOT NULL,"
+            "  `explaintion` varchar(1000) NOT NULL,"
+            "  `date` DATETIME,"
+            "  `title` varchar(100) NOT NULL,"
+            "  `url` varchar(1000) NOT NULL,"
+            "  PRIMARY KEY(`id`)"
+            ") ENGINE=InnoDB")
+
+
+        for table_name in TABLES:
+            table_description = TABLES[table_name]
+            try:
+                print("Creating table {}: ".format(table_name), end='')
+                cursor.execute(table_description)
+            except mysql.connector.Error as err:
+                if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+                    print("already exists.")
+                else: 
+                    print(err.msg)
+            else:
+                print("OK")
         
+            
     def append(self, cursor, cnx, content, which_table):
         add_product = (f"INSERT ignore INTO {which_table}"
                        "(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url) "
