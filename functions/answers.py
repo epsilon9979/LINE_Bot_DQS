@@ -11,7 +11,7 @@ def answer(response):
     #                 'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international', 'energy'][index]
     database = record()
     cursor, cnx = database.setting()
-    if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
+    if (int(id_mem),) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
         return TextSendMessage(text = f"{database.fetch(cursor, cnx, "Memory", 'id', None)}")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id = {id_mem}')
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
