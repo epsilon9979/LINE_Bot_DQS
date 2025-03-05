@@ -9,9 +9,10 @@ def answer(response):
     # which_table = ['Keelung', 'New_Taipei', 'Taipei', 'Taoyuan', 'Hsinchu', 'Miaoli', 'Taichung',
     #                 'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
     #                 'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international', 'energy'][index]
+    id_mem = int(id_mem)
     database = record()
     cursor, cnx = database.setting()
-    if (int(id_mem),) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
+    if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
         return TextSendMessage(text = f"{database.fetch(cursor, cnx, "Memory", 'id', None)}")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id = {id_mem}')
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
