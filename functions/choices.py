@@ -27,12 +27,12 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     index = which_table.index(data[2])
     code = int(table_code[index])
     id_mem = 10000000+code*100000+int(data[1][0])*100 #1-table_code(11)-id(111)-num(11)
-    # while True:
-    #     existed_id = database.fetch(cursor, cnx, "Memory", 'id', None) #[(1,), (2,), (3,)...]
-    #     if (id_mem,) not in existed_id:
-    #         break
-    #     else:
-    #         id_mem = id_mem + 1
+    while True:
+        existed_id = database.fetch(cursor, cnx, "Memory", 'id', None) #[(1,), (2,), (3,)...]
+        if (id_mem,) not in existed_id:
+            break
+        else:
+            id_mem = id_mem + 1
             
     question_2 = (id_mem, data[1][1], random_options[0][1], random_options[1][1], random_options[2][1],
                   random_options[3][1], answer, data[1][7], data[1][8], data[1][9], data[1][10])
