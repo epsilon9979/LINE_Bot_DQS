@@ -48,7 +48,7 @@ def handle_message(event):
             product_1 = question(item)
             message.append(product_1[0])
             if product_1[2] != "empty":
-                message.append(choice(product_1))
+                message.append(choice(product_1)) 
             mark = 1
             
     if '\n' in response:
