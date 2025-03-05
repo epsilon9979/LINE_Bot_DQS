@@ -36,7 +36,6 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
             
     question_2 = (id_mem, data[1][1], random_options[0][1], random_options[1][1], random_options[2][1],
                   random_options[3][1], answer, data[1][7], data[1][8], data[1][9], data[1][10])
-    database.append(cursor, cnx, question_2, "Memory")
 
     template_message = TemplateSendMessage(
         alt_text = "pick up a correct option",
@@ -50,5 +49,5 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
             ]
         }
     )
-
+    database.append(cursor, cnx, question_2, "Memory")
     return template_message
