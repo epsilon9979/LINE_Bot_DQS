@@ -44,8 +44,8 @@ def handle_message(event):
     mark = 0
     message=[]
     for item in category:
-        if response == item:
-            product_1 = question(response)
+        if item == response:
+            product_1 = question(item)
             message.append(product_1[0])
             if product_1[2] != "empty":
                 message.append(choice(product_1))
