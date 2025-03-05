@@ -43,10 +43,10 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
         template = {
             "type": "carousel",
             "columns":[
-                {"title": "A", "text": random_options[0][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{id_mem}\nA"}] },
-                {"title": "B", "text": random_options[1][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{id_mem}\nB"}] },
-                {"title": "C", "text": random_options[2][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{id_mem}\nC"}] },
-                {"title": "D", "text": random_options[3][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{id_mem}\nD"}] }
+                {"title": "A", "text": random_options[0][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{str(id_mem)}\nA"}] },
+                {"title": "B", "text": random_options[1][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{str(id_mem)}\nB"}] },
+                {"title": "C", "text": random_options[2][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{str(id_mem)}\nC"}] },
+                {"title": "D", "text": random_options[3][1], "actions": [{"type": "message", "label": "選擇", "text": f"{data[3]}-{str(id_mem)}\nD"}] }
             ]
         }
     )
