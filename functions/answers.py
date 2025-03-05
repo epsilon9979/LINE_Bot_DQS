@@ -4,11 +4,6 @@ from functions.database import record
 def answer(response): 
     mark, selection = response.split("\n")
     county, id_mem = mark.split("-")
-    # counties = ['基隆','新北市','臺北市','桃園市','新竹','苗栗縣','臺中市','彰化縣','南投縣','雲林縣','嘉義','臺南市','高雄市','屏東縣','臺東縣','花蓮縣','宜蘭縣','連江縣','金門縣','澎湖縣','國際議題','能源議題','防災資訊']
-    # index = counties.index(county)
-    # which_table = ['Keelung', 'New_Taipei', 'Taipei', 'Taoyuan', 'Hsinchu', 'Miaoli', 'Taichung',
-    #                 'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
-    #                 'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international', 'energy'][index]
     id_mem = int(id_mem)
     database = record()
     cursor, cnx = database.setting()

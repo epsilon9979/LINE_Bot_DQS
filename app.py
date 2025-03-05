@@ -43,19 +43,18 @@ def handle_message(event):
     
     mark = 0
     message=[]
-    for item in category:
-        if response == item:
-            product_1 = question(response)
-            message.append(product_1[0])
-            if product_1[2] != "empty":
-                message.append(choice(product_1))
-            mark = 1
+    if response in category:
+        product_1 = question(response)
+        message.append(product_1[0])
+        if product_1[2] != "empty":
+            message.append(choice(product_1))
+        mark = 1
             
-    if '\n' in response:
+    elif '\n' in response:
         message.append( answer(response) )
         mark = 1
     
-    if mark == 0:
+    elif mark == 0:
         message.append(TextSendMessage(text='本系統無法提供訊息輸入'))    
         
     line_bot_api.reply_message(event.reply_token, message)
