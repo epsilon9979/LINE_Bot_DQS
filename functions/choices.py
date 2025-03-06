@@ -36,7 +36,7 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
             id_mem = id_mem + 1
     
     now = datetime.now() 
-    delta = timedelta(seconds=120)       
+    delta = timedelta(seconds=30)       
     for time in database.fetch(cursor, cnx, "Memory", 'time', None):
         if now - time[0] > delta:
             database.delete(cursor, cnx, "Memory", f"time = {time[0]}")
