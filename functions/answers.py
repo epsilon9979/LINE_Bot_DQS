@@ -1,4 +1,5 @@
 from linebot.models import *
+from datetime import datetime, timedelta
 from functions.database import record
 
 def answer(response): 
@@ -11,6 +12,11 @@ def answer(response):
         return TextSendMessage(text = f"{database.fetch(cursor, cnx, "Memory", 'id', None)}")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id = {id_mem}')
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
+    now = datetime.now() 
+    delta = timedelta(seconds=30)       
+    for time in database.fetch(cursor, cnx, "Memory", 'time', None):
+        if now - time[0] > delta:
+            database.delete(cursor, cnx, "Memory", f"time = {time[0]}")
     database.delete(cursor, cnx, "Memory", f"id = {id_mem}") #刪除臨時性作答紀錄
     
     if question_2[0][6] == selection:
