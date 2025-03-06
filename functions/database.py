@@ -70,7 +70,7 @@ class record:
             
     def append(self, cursor, cnx, content, which_table):
         add_product = (f"INSERT ignore INTO {which_table}"
-                       "(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url) "
+                       "(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, time, url) "
                        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
         cursor.execute(add_product, content)
         cnx.commit()
