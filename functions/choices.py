@@ -36,7 +36,7 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
             id_mem = id_mem + 1
     
     now = datetime.now() 
-    delta = timedelta(seconds=60)        
+    delta = timedelta(seconds=30)        
     database.delete(cursor, cnx, "Memory", f"time < '{now - delta}'") 
     question_2 = (id_mem, data[1][1], random_options[0][1], random_options[1][1], random_options[2][1],
                   random_options[3][1], answer, data[1][7], data[1][8], now, data[1][10])
