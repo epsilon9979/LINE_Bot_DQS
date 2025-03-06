@@ -48,7 +48,7 @@ class record:
             "  `answer` varchar(100) NOT NULL,"
             "  `explaintion` varchar(1000) NOT NULL,"
             "  `date` DATETIME,"
-            "  `title` varchar(100) NOT NULL,"
+            "  `time` DATETIME,"
             "  `url` varchar(1000) NOT NULL,"
             "  PRIMARY KEY(`id`)"
             ") ENGINE=InnoDB")

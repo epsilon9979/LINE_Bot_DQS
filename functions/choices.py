@@ -1,4 +1,5 @@
 from linebot.models import *
+from datetime import datetime, timedelta
 from functions.database import record
 import random
 
@@ -33,9 +34,15 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
             break
         else:
             id_mem = id_mem + 1
-            
+    
+    now = datetime.now() 
+    delta = timedelta(seconds=120)       
+    for time in database.fetch(cursor, cnx, "Memory", "time", None):
+        if now - time[0] > delta:
+            database.delete(cursor, cnx, "Memory", f"time = {time[0]}")
     question_2 = (id_mem, data[1][1], random_options[0][1], random_options[1][1], random_options[2][1],
-                  random_options[3][1], answer, data[1][7], data[1][8], data[1][9], data[1][10])
+                  random_options[3][1], answer, data[1][7], data[1][8], datetime.now(), data[1][10])
+    database.append(cursor, cnx, question_2, "Memory")
 
     template_message = TemplateSendMessage(
         alt_text = "pick up a correct option",
@@ -49,5 +56,4 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
             ]
         }
     )
-    database.append(cursor, cnx, question_2, "Memory")
     return template_message
