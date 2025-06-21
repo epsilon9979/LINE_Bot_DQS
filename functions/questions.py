@@ -18,6 +18,7 @@ def question(item):
     number = random.choice(existed_id)
     criteria = f"id={number}"
     result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
+    print("result:", result)
     # database.fetch = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
     
     description = f"#{item}-{result[0]}\n\n{result[1]}"
