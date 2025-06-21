@@ -1,107 +1,103 @@
-import mysql.connector
-from mysql.connector import errorcode
+import os
+import json
+import gspread
+from datetime import datetime
+from google.oauth2.service_account import Credentials
 
 class record:   
     
     def __init__(self):
         pass
-    
-    
-    def setting(self): 
+
+    def setting(self):
         try:
-            # cnx = mysql.connector.connect(
-            #     user='vercel',                         # 資料庫用戶名稱
-            #     password='iloveroyals941/O100659329',  # 資料庫密碼
-            #     host='140.118.138.234',                   # 公網 IP
-            #     database='questions_warehouse',        # 要連接的資料庫名稱（請改為你的資料庫名稱）
-            #     port=3306                              # MySQL 默認埠號
-            # )
-            cnx = mysql.connector.connect(
-                user='vercel',                         # 資料庫用戶名稱
-                password='iloveroyals941/O100659329',  # 資料庫密碼
-                host='35.234.3.230',                   # 公網 IP
-                database='questions_warehouse',        # 要連接的資料庫名稱（請改為你的資料庫名稱）
-                port=3306                              # MySQL 默認埠號
-            )
-            cursor = cnx.cursor()
-        except mysql.connector.Error as err:
-            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                print("Something is wrong with your user name or password")
-            elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                print("Database does not exist")
-            else:
-                print(err) 
-                    
-        return cursor, cnx 
+            service_account_info = json.loads(os.environ["GOOGLE_SERVICE_ACCOUNT_JSON"])
+            scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+            creds = Credentials.from_service_account_info(service_account_info, scopes=scopes)
+            # creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
+            client = gspread.authorize(creds)
+            sheet_id = "1TIV5rHSUcdhBnR2mdUHWgbA-UGW76Nx7mvWPOaPptnw"
+            cursor = client.open_by_key(sheet_id)
+        except Exception as e:
+            print("發生錯誤,因為:", e)
+            return None, None
+        else:
+            print("successfully connect to database")
+            cnx = 0  #純粹配合格式，本身無意義
+            return cursor, cnx
     
     
     def create_table(self, cursor, name):
-        TABLES = {}
-        TABLES[name] = (
-            f"CREATE TABLE {name} ("
-            "  `id` int NOT NULL,"
-            "  `questions` varchar(1000) NOT NULL,"
-            "  `optionA` varchar(100) NOT NULL,"
-            "  `optionB` varchar(100) NOT NULL,"
-            "  `optionC` varchar(100) NOT NULL,"
-            "  `optionD` varchar(100) NOT NULL,"
-            "  `answer` varchar(100) NOT NULL,"
-            "  `explaintion` varchar(1000) NOT NULL,"
-            "  `date` DATETIME,"
-            "  `time` DATETIME,"
-            "  `url` varchar(1000) NOT NULL,"
-            "  PRIMARY KEY(`id`)"
-            ") ENGINE=InnoDB")
-
-
-        for table_name in TABLES:
-            table_description = TABLES[table_name]
-            try:
-                print("Creating table {}: ".format(table_name), end='')
-                cursor.execute(table_description)
-            except mysql.connector.Error as err:
-                if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-                    print("already exists.")
-                else: 
-                    print(err.msg)
-            else:
-                print("OK")
+        try:
+            sheet = cursor.add_worksheet(title=name, rows=1000, cols=20)
+            sheet.update("A1:K1", [["id", "questions", "optionA", "optionB", "optionC", "optionD", "answer", "explaintion", "date", "time", "url"]])
+        except Exception as e:
+            print(f"{name} already exists",e)
+        else:
+            print(f"Successfully creating table {name}")
         
             
     def append(self, cursor, cnx, content, which_table):
-        add_product = (f"INSERT ignore INTO {which_table}"
-                       "(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, time, url) "
-                       "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
-        cursor.execute(add_product, content)
-        cnx.commit()
+        sheet = cursor.worksheet(which_table)
+        values = list(content)
+        values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
+        values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
+        id = int(values[0])
+        sheet.update(f"A{id+1}:k{id+1}", [values], value_input_option="USER_ENTERED")
+        print(f"successfully append {id} to {which_table}.")
               
               
-    def fetch(self, cursor, cnx, which_table, which_item, criteria): 
+    def fetch(self, cursor, cnx, which_table, which_item, criteria):
         #items:(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)
-        if criteria:
-            query = (f"SELECT {which_item} FROM {which_table} WHERE {criteria}")
-        else:
-            query = (f"SELECT {which_item} FROM {which_table}")
-        cursor.execute(query)
-        box = []
-        for goals in cursor:
-            box.append(goals)
-        return box
+        try:
+            sheet = cursor.worksheet(which_table)
+            if criteria is not None and "id=" in criteria:
+                id = int(criteria.split("=")[1])
+                box = sheet.row_values(id+1)
+                box = [i for i in box if i.strip()]
+            elif criteria is None:
+                cell = sheet.find(which_item)
+                box = sheet.col_values(cell.col)[1:]
+                box = [i for i in box if i.strip()]
+            return box
+        except Exception as e:
+            print("something wrong:", e)
+            return []
 
 
     def delete(self, cursor, cnx, which_table, criteria):
-        delete_query = ( f"DELETE FROM {which_table} WHERE {criteria}" )
-        cursor.execute(delete_query)
-        cnx.commit()
+        try:
+            sheet = cursor.worksheet(which_table)
+            if "time<" in criteria:
+                expire_date = criteria.split("<")[1].strip("'")
+                expire_date = datetime.strptime(expire_date, "%Y-%m-%d %H:%M:%S.%f")
+                box_date = (sheet.col_values(sheet.find("time").col))[1:]
+                box_date = [i for i in box_date if i.strip()]
+                box_date = [datetime.strptime(i, "%Y-%m-%d %H:%M:%S") for i in box_date]
+                box_id = (sheet.col_values(sheet.find("id").col))[1:]
+                box_id = [i for i in box_id if i.strip()]
+                for item in box_date:
+                    if item < expire_date:
+                        idx = box_date.index(item)
+                        row = sheet.find(box_id[idx]).row
+                        # print(f"successfully deleting data: \n { tuple(sheet.row_values(row)) }")
+                        sheet.batch_clear([f"A{row}:K{row}"])
+                        
+            if "id=" in criteria:
+                id = criteria.split("=")[1].strip("'")  
+                row = sheet.find(id).row 
+                sheet.batch_clear([f"A{row}:K{row}"])         
+                
+        except Exception as e:
+            print("something wrong", e)
         
         
     def show_tables(self, cursor):
-        cursor.execute("SHOW TABLES")
-        existed_tables = []
-        for table in cursor:
-            table = str(table[0])
-            existed_tables.append(table)
-        return existed_tables
+        if cursor is None:
+            print("cursor 無效，無法讀取表單")
+            return []
+        sheets = cursor.worksheets()
+        return [sheet.title for sheet in sheets]
 
     
     

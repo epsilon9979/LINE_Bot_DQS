@@ -10,11 +10,11 @@ def answer(response):
     cursor, cnx = database.setting()
     if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
         return TextSendMessage(text = f"已超過作答時間")
-    question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id = {id_mem}')
+    question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id={id_mem}')
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, time, url)]
     if datetime.now()  - question_2[0][9] > timedelta(seconds=60):
         return TextSendMessage(text = f"已超過作答時間")
-    database.delete(cursor, cnx, "Memory", f"id = {id_mem}") #刪除臨時性作答紀錄
+    database.delete(cursor, cnx, "Memory", f"id={id_mem}") #刪除臨時性作答紀錄
     
     if question_2[0][6] == selection:
         border_color = "#22FF00"
