@@ -54,6 +54,7 @@ class record:
             if criteria is not None and "id=" in criteria:
                 id = int(criteria.split("=")[1])
                 box = sheet.row_values(id+1)
+                print("box:", box)
                 box = [i for i in box if i.strip()]
             elif criteria is None:
                 cell = sheet.find(which_item)
