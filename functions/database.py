@@ -54,12 +54,13 @@ class record:
             if criteria is not None and "id=" in criteria:
                 id = int(criteria.split("=")[1])
                 box = sheet.row_values(id+1)
-                print("box:", box)
+                print("box1:", box)
                 box = [i for i in box if i.strip()]
             elif criteria is None:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
                 box = [i for i in box if i.strip()]
+            print("box2:", box)
             return box
         except Exception as e:
             print("something wrong:", e)
