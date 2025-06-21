@@ -40,8 +40,8 @@ class record:
     def append(self, cursor, cnx, content, which_table):
         sheet = cursor.worksheet(which_table)
         values = list(content)
-        values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
-        values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
+        # values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
+        # values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
         id = int(values[0])
         sheet.update(f"A{id+1}:k{id+1}", [values], value_input_option="USER_ENTERED")
         print(f"successfully append {id} to {which_table}.")
@@ -54,12 +54,10 @@ class record:
             if criteria is not None and "id=" in criteria:
                 id = int(criteria.split("=")[1])
                 box = sheet.row_values(id+1)
-                # box = [i for i in box if i.strip()]
             elif criteria is None:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
                 box = [i for i in box if i.strip()]
-            print("box2:", box)
             return [box]
         except Exception as e:
             print("something wrong:", e)
