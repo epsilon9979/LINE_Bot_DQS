@@ -67,6 +67,7 @@ class record:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
                 box = [i for i in box if i.strip()]
+                box = [int(i) for i in box]
             return [box]
         except Exception as e:
             print("something wrong:", e)
