@@ -40,7 +40,6 @@ class record:
     def append(self, cursor, cnx, content, which_table):
         sheet = cursor.worksheet(which_table)
         box = sheet.col_values(sheet.find(id).col)
-        print("box:", box)
         # for row in box:
         #     if row == '':
         
@@ -61,6 +60,7 @@ class record:
             elif criteria is None:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
+                print("box:", box)
                 box = [i for i in box if i.strip()]
             return [box]
         except Exception as e:
