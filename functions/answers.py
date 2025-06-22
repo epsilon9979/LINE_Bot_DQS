@@ -5,9 +5,10 @@ from datetime import datetime, timedelta
 def answer(response): 
     mark, selection = response.split("\n")
     county, id_mem = mark.split("-")
-    id_mem = id_mem
+    print("id_mem:", id_mem)####################################################
     database = record() 
     cursor, cnx = database.setting()
+    print("data2:", database.fetch(cursor, cnx, "Memory", 'id', None))##########################################
     if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
         return TextSendMessage(text = f"已超過作答時間")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id={id_mem}')
