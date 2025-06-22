@@ -66,7 +66,6 @@ class record:
             elif criteria is None:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
-                print("box:", box)
                 box = [i for i in box if i.strip()]
                 box = [(int(i),) for i in box]
             return box
@@ -95,7 +94,7 @@ class record:
                         
             if "id=" in criteria:
                 id = criteria.split("=")[1].strip("'")  
-                row = sheet.find(id).row 
+                row = sheet.find( str(id) ).row 
                 sheet.batch_clear([f"A{row}:K{row}"])         
                 
         except Exception as e:
