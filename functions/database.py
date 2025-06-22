@@ -63,6 +63,9 @@ class record:
                 id = criteria.split("=")[1]
                 cell = sheet.find(id)
                 box = sheet.row_values(cell.row)
+                if int(id) > 10000:
+                    box[8] = datetime.strptime(box[8], "%Y-%m-%d %H:%M:%S")
+                    box[9] = datetime.strptime(box[9], "%Y-%m-%d %H:%M:%S")
             elif criteria is None:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
