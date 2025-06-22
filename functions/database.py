@@ -39,11 +39,14 @@ class record:
             
     def append(self, cursor, cnx, content, which_table):
         sheet = cursor.worksheet(which_table)
+        box = sheet.col_values(sheet.find(id).col)
+        print("box:", box)
+        # for row in box:
+        #     if row == '':
+        
         values = list(content)
-        # values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
         values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
         id = int(values[0])
-        print("id:", id)
         sheet.update(f"A{id+1}:k{id+1}", [values], value_input_option="USER_ENTERED")
         print(f"successfully append {id} to {which_table}.")
               
