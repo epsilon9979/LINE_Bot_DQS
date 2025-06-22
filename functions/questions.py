@@ -16,7 +16,7 @@ def question(item):
     
     existed_id = database.fetch(cursor, cnx, which_table, 'id', None) #[(1,), (2,), (3,)...]
     print("existed_id:", existed_id)##########################################
-    number = random.choice(existed_id)[0]
+    number = random.choice(existed_id[0])
     print("random:", number)#####################################################
     criteria = f"id={number}"
     result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
