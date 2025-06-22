@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 def answer(response): 
     mark, selection = response.split("\n")
     county, id_mem = mark.split("-")
+    id_mem = int(id_mem)
     print("id_mem:", id_mem)####################################################
     database = record() 
     cursor, cnx = database.setting()
