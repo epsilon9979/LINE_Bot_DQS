@@ -68,7 +68,7 @@ class record:
                 box = sheet.col_values(cell.col)[1:]
                 box = [i for i in box if i.strip()]
                 box = [(int(i),) for i in box]
-            return box
+            return [box]
         except Exception as e:
             print("something wrong when fetching data:", e)
             return []

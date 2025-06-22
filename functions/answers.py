@@ -13,7 +13,7 @@ def answer(response):
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id={id_mem}')
     print("question_2:", question_2)#####################################################
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, time, url)]
-    if datetime.now()  - question_2[0][9] > timedelta(seconds=60):
+    if datetime.now() - question_2[0][9] > timedelta(seconds=60):
         return TextSendMessage(text = f"已超過作答時間")
     database.delete(cursor, cnx, "Memory", f"id={id_mem}") #刪除臨時性作答紀錄
     

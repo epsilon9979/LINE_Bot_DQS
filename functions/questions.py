@@ -10,14 +10,14 @@ def question(item):
     which_table = ['Keelung', 'New_Taipei', 'Taipei', 'Taoyuan', 'Hsinchu', 'Miaoli', 'Taichung',
                     'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
                     'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international','energy','disaster'][index]
-    if which_table not in database.show_tables(cursor) or database.fetch(cursor, cnx, which_table, "id", None)==[]:
+    if which_table not in database.show_tables(cursor) or database.fetch(cursor, cnx, which_table, "id", None)[0]==[]:
         product = f"目前沒有 {item} 的相關題目"
         return [TextSendMessage(text=product), "empty", "empty"]
     
-    existed_id = database.fetch(cursor, cnx, which_table, 'id', None) #[(1,), (2,), (3,)...]
+    existed_id = database.fetch(cursor, cnx, which_table, 'id', None)[0] #[[(1,), (2,), (3,)...]]
     number = random.choice(existed_id)[0]
     criteria = f"id={number}"
-    result = database.fetch(cursor, cnx, which_table, '*', criteria)
+    result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
     # database.fetch = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
     
     description = f"#{item}-{result[0]}\n\n{result[1]}"
