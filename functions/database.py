@@ -62,7 +62,7 @@ class record:
             sheet = cursor.worksheet(which_table)
             if criteria is not None and "id=" in criteria:
                 id = int(criteria.split("=")[1])
-                cell = sheet.find(which_item)
+                cell = sheet.find(id)
                 box = sheet.row_values(cell.row)
             elif criteria is None:
                 cell = sheet.find(which_item)
