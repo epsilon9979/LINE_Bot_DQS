@@ -15,7 +15,9 @@ def question(item):
         return [TextSendMessage(text=product), "empty", "empty"]
     
     existed_id = database.fetch(cursor, cnx, which_table, 'id', None) #[(1,), (2,), (3,)...]
+    print("existed_id:", existed_id)##########################################
     number = random.choice(existed_id)[0]
+    print("random:", number)#####################################################
     criteria = f"id={number}"
     result = database.fetch(cursor, cnx, which_table, '*', criteria)[0]
     # database.fetch = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url)]
