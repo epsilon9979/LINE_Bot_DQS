@@ -11,7 +11,6 @@ def answer(response):
     if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None)[0]: #[[(1,), (2,), (3,)...]]
         return TextSendMessage(text = f"已超過作答時間")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id={id_mem}')
-    print("question_2:", question_2)#####################################################
     # question_2 = [(id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, time, url)]
     if datetime.now() - question_2[0][9] > timedelta(seconds=60):
         return TextSendMessage(text = f"已超過作答時間")
