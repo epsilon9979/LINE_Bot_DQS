@@ -40,6 +40,7 @@ class record:
     def append(self, cursor, cnx, content, which_table):
         sheet = cursor.worksheet(which_table)
         box = sheet.col_values(sheet.find('id').col)
+        print("id:", box)
         for row in box:
             if row == '':
                 idx = box.index(row)
