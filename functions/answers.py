@@ -8,7 +8,7 @@ def answer(response):
     id_mem = int(id_mem)
     database = record() 
     cursor, cnx = database.setting()
-    if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None): #[(1,), (2,), (3,)...]
+    if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None)[0]: #[[(1,), (2,), (3,)...]]
         return TextSendMessage(text = f"已超過作答時間")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id={id_mem}')
     print("question_2:", question_2)#####################################################
