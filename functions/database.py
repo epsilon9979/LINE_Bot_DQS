@@ -41,10 +41,14 @@ class record:
         sheet = cursor.worksheet(which_table)
         box = sheet.col_values(sheet.find('id').col)
         print("id:", box)
+        whether_exisited = 0
         for row in box:
+            idx = box.index(row)
             if row == '':
-                idx = box.index(row)
+                whether_exisited = 1
                 break
+        if whether_exisited == 0:
+            idx = idx + 1
         values = list(content)
         values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
         id = int(values[0])
