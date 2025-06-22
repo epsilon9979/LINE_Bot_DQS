@@ -67,10 +67,10 @@ class record:
                 cell = sheet.find(which_item)
                 box = sheet.col_values(cell.col)[1:]
                 box = [i for i in box if i.strip()]
-                box = [tuple(int(i)) for i in box]
+                box = [int(i) for i in box]
             return [box]
         except Exception as e:
-            print("something wrong:", e)
+            print("something wrong when fetching data:", e)
             return []
 
 
@@ -98,7 +98,7 @@ class record:
                 sheet.batch_clear([f"A{row}:K{row}"])         
                 
         except Exception as e:
-            print("something wrong", e)
+            print("something wrong when deleting data:", e)
         
         
     def show_tables(self, cursor):
