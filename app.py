@@ -61,8 +61,8 @@ def handle_message(event):
         mark = 1
     
     if mark == 0:
-        message.append(TextSendMessage(text='This system does not support message input.'))    
-        
+        message.append(TextSendMessage(text='本系統不提供文字輸入'))    
+    
     line_bot_api.reply_message(event.reply_token, message)
     
 # ========主程式==========
