@@ -52,11 +52,16 @@ def handle_message(event):
             mark = 1
             
     if '\n' in response:
-        message.append( answer(response) )
+        result = answer(response) # answer(response) = [TextSendMessage(text = f"Time limit exceeded"), 0] or [flex_message1, 0] or [flex_message1, flex_message2]
+        if result[1] == 0:
+            message.append(result[0])
+        else:
+            message.append(result[0])
+            message.append(result[1])
         mark = 1
     
     if mark == 0:
-        message.append(TextSendMessage(text='本系統無法提供訊息輸入'))    
+        message.append(TextSendMessage(text='This system does not support message input.'))    
         
     line_bot_api.reply_message(event.reply_token, message)
     
