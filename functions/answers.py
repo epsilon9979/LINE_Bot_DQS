@@ -73,7 +73,7 @@ def answer(response):
                     },
                     {
                         "type": "button",
-                        "action": {"type": "uri", "label": "資料原文", "url": question_2[0][10]},
+                        "action": {"type": "uri", "label": "資料原文", "uri": question_2[0][10]},
                         "gravity": "bottom",
                         "margin": "none",
                         "style": "primary",
