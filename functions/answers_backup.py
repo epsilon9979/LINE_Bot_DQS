@@ -8,6 +8,7 @@ def answer(response):
     id_mem = int(id_mem)
     database = record() 
     cursor, cnx = database.setting()
+    
     if (id_mem,) not in database.fetch(cursor, cnx, "Memory", 'id', None)[0]: #[[(1,), (2,), (3,)...]]
         return TextSendMessage(text = f"已超過作答時間")
     question_2 = database.fetch(cursor, cnx, "Memory", '*', f'id={id_mem}')
@@ -64,7 +65,7 @@ def answer(response):
                     },
                     {
                         "type": "button",
-                        "action": {"type": "uri", "label": "資料原文", "uri": question_2[0][10]},
+                        "action": {"type": "uri", "label": "資料原文", "url": question_2[0][10]},
                         "gravity": "bottom",
                         "margin": "none",
                         "style": "primary",
