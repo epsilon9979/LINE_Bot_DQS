@@ -29,7 +29,7 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
     table_code = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
     index = which_table.index(data[2])
     code = int(table_code[index])
-    id_mem = random.randint(1000000, 9999999)
+    id_mem = id_mem = 10000000+code*100000+int(data[1][0])*100+random.randint(0, 99)
     
     #計時開始，並進入作答記憶區
     now = datetime.now() 

@@ -42,9 +42,17 @@ class record:
 
         values = list(content)
 
-        # 全部轉成文字，避免 Google Sheet 自動轉成科學記號或日期序號
+        # 避免 Google Sheet 自動把日期、時間轉成數字序號
+        if isinstance(values[8], datetime):
+            values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
+
+        if isinstance(values[9], datetime):
+            values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
+
+        # 全部轉成字串，避免 Google Sheet 自動轉格式
         values = [str(v) for v in values]
 
+        # 真正的 append，不要自己找空列再 update
         sheet.append_row(
             values,
             value_input_option="RAW",
