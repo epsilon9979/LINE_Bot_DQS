@@ -42,15 +42,12 @@ class record:
 
         values = list(content)
 
-        if isinstance(values[8], datetime):
-            values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
-
-        if isinstance(values[9], datetime):
-            values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
+        # 全部轉成文字，避免 Google Sheet 自動轉成科學記號或日期序號
+        values = [str(v) for v in values]
 
         sheet.append_row(
             values,
-            value_input_option="USER_ENTERED",
+            value_input_option="RAW",
             insert_data_option="INSERT_ROWS",
             table_range="A:K"
         )
