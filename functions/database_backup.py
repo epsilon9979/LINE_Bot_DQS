@@ -39,23 +39,20 @@ class record:
             
     def append(self, cursor, cnx, content, which_table):
         sheet = cursor.worksheet(which_table)
-
+        box = sheet.col_values(sheet.find('id').col)
+        whether_exisited = 0
+        for row in box:
+            idx = box.index(row)
+            if row == '':
+                whether_exisited = 1
+                break
+        if whether_exisited == 0:
+            idx = idx + 1
         values = list(content)
-
-        if isinstance(values[8], datetime):
-            values[8] = values[8].strftime("%Y-%m-%d %H:%M:%S")
-
-        if isinstance(values[9], datetime):
-            values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
-
-        sheet.append_row(
-            values,
-            value_input_option="USER_ENTERED",
-            insert_data_option="INSERT_ROWS",
-            table_range="A:K"
-        )
-
-        print(f"successfully append {values[0]} to {which_table}.")
+        values[9] = values[9].strftime("%Y-%m-%d %H:%M:%S")
+        id = int(values[0])
+        sheet.update(f"A{idx+1}:k{idx+1}", [values], value_input_option="USER_ENTERED")
+        print(f"successfully append {id} to {which_table}.")
               
               
     def fetch(self, cursor, cnx, which_table, which_item, criteria):

@@ -1,6 +1,7 @@
 from linebot.models import *
 from datetime import datetime, timedelta
 from functions.database import record
+import time
 import random
 
 def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA, optionB, optionC, optionD, answer, explaintion, date, title, url), which_table, item]
@@ -26,15 +27,9 @@ def choice(data): # data = [TextSendMessage(questions), (id, questions, optionA,
                     'Changhua', 'Nantou', 'Yunlin', 'Chiayi', 'Tainan', 'Kaohsiung', 'Pingtung',
                     'Taitung', 'Hualien', 'Yilan', 'Lienchiang', 'Kinmen', 'Penghu', 'international', 'energy', 'disaster']
     table_code = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-    index = which_table.index(data[2])
+    index = which_table.index(data[300])
     code = int(table_code[index])
-    id_mem = 10000000+code*100000+int(data[1][0])*100 #1-table_code(11)-id(111)-num(11)
-    while True:
-        existed_id = database.fetch(cursor, cnx, "Memory", 'id', None)[0] #[[(1,), (2,), (3,)...]]
-        if (id_mem,) not in existed_id:
-            break
-        else:
-            id_mem = id_mem + 1
+    id_mem = int(f"{int(time.time() * 1000)}{random.randint(100, 999)}")
     
     #計時開始，並進入作答記憶區
     now = datetime.now() 
